@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senangkos - Landing Page</title>
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="logo">
+      <img src="../images/lg.svg" alt="Logo Senangkos" />
+    </div>
+    <div class="auth-buttons">
+      <button id="loginBtn">Login</button>
+      <button id="signupBtn">Sign Up</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" style="background: url('../images/hero-bg.png') no-repeat center center/cover;">
+    <div class="hero-content">
+      <h1>Tinggal Nyaman Serasa di Rumah!</h1>
+    </div>
+  </section>
+
+  <!-- Kamar Section -->
+  <section class="section" id="kamar">
+    <h2>Cari Kost Nyaman & Terjangkau?<br />Tinggal di Sini Saja, Serasa di Rumah Sendiri!</h2>
+    <div class="kamar-list">
+      <div class="card">
+        <img src="../images/kamar.jpg" alt="Kamar 1" />
+        <p>Kamar No 1</p>
+        <button class="signupRedirect" onclick="window.location.href='register.html';">Lihat Sekarang</button>
+      </div>
+      <div class="card">
+        <img src="../images/kamar.jpg" alt="Kamar 2" />
+        <p>Kamar No 2</p>
+        <button class="signupRedirect" onclick="window.location.href='register.html';">Lihat Sekarang</button>
+      </div>
+      <div class="card">
+        <img src="../images/kamar.jpg" alt="Kamar 3" />
+        <p>Kamar No 3</p>
+        <button class="signupRedirect" onclick="window.location.href='register.html';">Lihat Sekarang</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fasilitas Section -->
+  <section class="section fasilitas">
+    <h2>Fasilitas yang Tersedia</h2>
+    <div class="fasilitas-list">
+      <div class="card">
+        <img src="../images/parkir.jpg" alt="Lahan Parkir" />
+        <p>Tersedia Lahan Parkir</p>
+      </div>
+      <div class="card">
+        <img src="../images/kmr-mandi.jpg" alt="Kamar Mandi Luar" />
+        <p>Kamar Mandi Luar</p>
+      </div>
+      <div class="card">
+        <img src="../images/dapur.jpg" alt="Dapur" />
+        <p>Tersedia Dapur Bersama</p>
+      </div> 
+    </div>
+  </section>
+
+  <!-- Lokasi Section -->
+  <section class="section lokasi">
+    <h2>Lokasi Kost</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-container">
+        <div class="footer-left">
+          <img src="../images/lg.svg" alt="Logo Senangkos" class="footer-logo">
+        </div>
+        <div class="footer-center footer-nav">
+          <a href="">Home</a>
+          <a href="#">Explore</a>
+          <a href="#">Kamar Anda</a>
+          <a href="#">Profile</a>
+        </div>
+      </div>      
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-left">© 2025 Senangkos. All rights reserved.</div>
+      <div class="footer-right">Website by Gondrong</div>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      $('#loginBtn').click(function () {
+        window.location.href = 'login.html';
+      });
+
+      $('#signupBtn, .signupRedirect').click(function () {
+        window.location.href = 'register.html';
+      });
+    });
+  </script>
+
+  <script src="../js/index.js"></script>
+
+  <script src="../js/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/jquery-validation-1.19.5/jquery.validate.min.js"></script>
+  <script src="../js/jquery-validation-1.19.5/additional-methods.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        url: 'http://localhost:8000/api/kamars',
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+          const kamarTerbatas = data.slice(2, 5);
+  
+          $('.kamar-list .card').each(function (index) {
+            if (index < kamarTerbatas.length) {
+              const kamar = kamarTerbatas[index];
+              const imageUrl = `http://localhost:8000/storage/${kamar.image}`;
+  
+              $(this).find('img').attr('src', imageUrl);
+              $(this).find('img').attr('alt', `Foto Kamar ${kamar.id}`);
+              $(this).find('p').text('Kamar ' + parseInt(kamar.id).toLocaleString());
+              // $(this).find('p').text('Rp ' + parseInt(kamar.harga).toLocaleString());
+            }
+          });
+        },
+        error: function (xhr, status, error) {
+          console.error('Gagal memuat data kamar:', error);
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,182 @@
+/* Global Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #111;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.auth-buttons {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  display: flex;
+  gap: 20px;
+}
+
+.auth-buttons button {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#loginBtn {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+}
+
+#signupBtn {
+  background-color: #328300;
+  color: #fff;
+  border: 2px solid #328300;
+  border-radius: 8px;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('../images/hero-bg.png') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 60px;
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Section */
+.section {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.kamar-list, .fasilitas-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fcfcfc;
+  padding: 30px 20px;
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  border: 2px solid rgb(116, 114, 114);
+}
+
+.card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.card button {
+  margin-top: 10px;
+  padding: 5px 15px;
+  background: #328300;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* Lokasi */
+.lokasi iframe {
+  border-radius: 10px;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.footer-top {
+  background-color: #86D52B;
+  padding: 20px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  width: 150px;
+  height: auto;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #f0f0f0;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #97D94D;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+}
+
+.footer-left {
+  margin-left: 50px;
+}
+
+.footer-right {
+  margin-right: 50px;
+}

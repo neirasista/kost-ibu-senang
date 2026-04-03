@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Profil</title>
+  <link rel="stylesheet" href="../css/editprofile.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Profil</h1>
+    <div class="form-box">
+      <h2>Ubah Data Diri</h2>
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Masukkan email" />
+
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" placeholder="Masukkan nama lengkap" />
+
+      <label for="hp">Nomor Handphone</label>
+      <input type="tel" id="hp" placeholder="Masukkan no. HP" />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Masukkan password" />
+
+      <button class="edit-button">Simpan Profil</button>
+    </div>
+  </div>
+  <script src="../js/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/jquery-validation-1.19.5/jquery.validate.min.js"></script>
+  <script src="../js/jquery-validation-1.19.5/additional-methods.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Ambil data user dengan role 'penyewa' dari server
+      $.ajax({
+        url: '/users/role/penyewa', // sesuaikan dengan route kamu
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+          if (response && response.length > 0) {
+            // Misalnya kita ambil data user pertama buat contoh
+            const user = response[0];
+            $("#email").val(user.email);
+            $("#nama").val(user.nama);
+            $("#hp").val(user.hp);
+          } else {
+            console.log("Data penyewa tidak ditemukan");
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error("Terjadi kesalahan:", error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Gagal mengambil data penyewa!'
+          });
+        }
+      });
+    });
+  </script>
+  
